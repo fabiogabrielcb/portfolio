@@ -1,24 +1,50 @@
 <script setup lang="ts">
-import {IMAGE_LOGO} from '../assets';
-const categories = ['Home', 'Sobre', 'Serviços', 'Projetos']
+import { ABOUT_ID, HOME_ID, SERVICES_ID } from "~/constants";
+import { IMAGE_LOGO } from "../assets";
+
+const categories = [
+  {
+    title: "Home",
+    id: HOME_ID,
+  },
+  // {
+  //   title: "Sobre",
+  //   id: ABOUT_ID,
+  // },
+  {
+    title: "Serviços",
+    id: SERVICES_ID,
+  },
+  {
+    title: "Projetos",
+    id: "",
+  },
+];
 </script>
 
 <template>
-	<div class="flex flex-row items-center justify-between bg-secondary text-white p-5 px-20">
-		<div class="text-lg flex flex-row items-center gap-3">
-			<img :src="IMAGE_LOGO" alt="Logo" class="w-12">
+  <div
+    class="fixed flex w-full flex-row items-center justify-between bg-secondary p-5 px-20 text-white"
+  >
+    <div class="flex flex-row items-center gap-3 text-lg">
+      <img :src="IMAGE_LOGO" alt="Logo" class="w-12" />
 
-			<p>Akiva</p>
-		</div>
+      <p>Akiva</p>
+    </div>
 
-		<div>
-			<ul class="flex flex-row">
-				<li v-for="category of categories"
-				class="cursor-pointer px-5 hover:text-primary"
-				>{{ category }}</li>
-			</ul>
-		</div>
+    <div>
+      <ul class="flex flex-row">
+        <a
+          v-for="category of categories"
+          rel="noopener"
+          :href="`#${category.id}`"
+          class="cursor-pointer px-5 hover:text-primary"
+        >
+          {{ category.title }}
+        </a>
+      </ul>
+    </div>
 
-		<BaseButton>Fale comigo</BaseButton>
-	</div>
+    <BaseButton>Fale comigo</BaseButton>
+  </div>
 </template>
