@@ -14,6 +14,7 @@ export default {
         "secondary-light": "#505250",
 
         gray: "#9ca3af",
+        "gray-light": "#e1e3e7",
       },
     },
   },
@@ -28,6 +29,11 @@ export default {
           "padding-top": "8rem",
           "padding-right": "5rem",
           "padding-left": "5rem",
+        },
+        ".rounded-icon": {
+          cursor: "pointer",
+          padding: "0.5rem",
+          "border-radius": "9999px",
         },
       });
     }),

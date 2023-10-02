@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ABOUT_ID, HOME_ID, SERVICES_ID } from "~/constants";
+import { HOME_ID, SERVICES_ID, PROJECTS_ID } from "~/constants";
 import { IMAGE_LOGO } from "../assets";
 
 const categories = [
@@ -7,24 +7,21 @@ const categories = [
     title: "Home",
     id: HOME_ID,
   },
-  // {
-  //   title: "Sobre",
-  //   id: ABOUT_ID,
-  // },
+
   {
     title: "Serviços",
     id: SERVICES_ID,
   },
   {
     title: "Projetos",
-    id: "",
+    id: PROJECTS_ID,
   },
 ];
 </script>
 
 <template>
   <div
-    class="fixed flex w-full flex-row items-center justify-between bg-secondary p-5 px-20 text-white"
+    class="fixed z-50 flex w-full flex-row items-center justify-between bg-secondary p-5 px-20 text-white"
   >
     <div class="flex flex-row items-center gap-3 text-lg">
       <img :src="IMAGE_LOGO" alt="Logo" class="w-12" />
