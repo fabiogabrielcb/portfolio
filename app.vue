@@ -4,7 +4,7 @@
 
 <style>
 html {
-  font-family: "Inter", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 * {
@@ -13,7 +13,8 @@ html {
   transition: box-shadow 0.1s ease-in-out;
 }
 
-.list-move, /* apply transition to moving elements */
+/* Page */
+.list-move,
 .list-enter-active,
 .list-leave-active {
   transition: all 0.5s ease;
@@ -25,12 +26,11 @@ html {
   transform: translateY(30px);
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
 .list-leave-active {
   position: absolute;
 }
 
+/* Page */
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
@@ -39,5 +39,20 @@ html {
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
+}
+
+/* Slide fade */
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>

@@ -49,6 +49,12 @@ const hasPreviousProject = computed(() => currentProjectIdx.value > 0);
 
 const onNextProject = () => currentProjectIdx.value++;
 const onPreviousProject = () => currentProjectIdx.value--;
+
+// Image full screen
+const showImagesFullScreen = ref(false);
+
+const toogleShowImagesFullScreen = () =>
+  (showImagesFullScreen.value = !showImagesFullScreen.value);
 </script>
 
 <template>
@@ -125,7 +131,7 @@ const onPreviousProject = () => currentProjectIdx.value--;
           }"
         />
 
-        <transition>
+        <transition name="slide-fade" mode="out-in">
           <Project
             :key="currentProjectIdx"
             :title="projects[currentProjectIdx].title"
@@ -133,8 +139,18 @@ const onPreviousProject = () => currentProjectIdx.value--;
             :features="projects[currentProjectIdx].features"
             :mobile-img-src="projects[currentProjectIdx].mobileImgSrc"
             :dashboard-img-src="projects[currentProjectIdx].dashboardImgSrc"
+            @image-click="toogleShowImagesFullScreen"
           />
         </transition>
+
+        <ImagesFullScreen
+          v-if="showImagesFullScreen"
+          @close="toogleShowImagesFullScreen"
+          :images="[
+            projects[currentProjectIdx].mobileImgSrc,
+            projects[currentProjectIdx].dashboardImgSrc,
+          ]"
+        />
 
         <Icon
           name="formkit:arrowright"

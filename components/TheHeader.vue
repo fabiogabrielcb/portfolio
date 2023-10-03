@@ -21,7 +21,7 @@ const categories = [
 
 <template>
   <div
-    class="fixed z-50 flex w-full flex-row items-center justify-between bg-secondary p-5 px-20 text-white"
+    class="fixed z-10 flex w-full flex-row items-center justify-between bg-secondary p-5 px-20 text-white"
   >
     <div class="flex flex-row items-center gap-3 text-lg">
       <img :src="IMAGE_LOGO" alt="Logo" class="w-12" />

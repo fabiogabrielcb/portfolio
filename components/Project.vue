@@ -7,17 +7,12 @@ const props = defineProps<{
   dashboardImgSrc: string;
 }>();
 
+const emit = defineEmits<{
+  (e: "imageClick"): void;
+}>();
+
 const imgs = [props.dashboardImgSrc, props.mobileImgSrc];
 </script>
-
-<!-- <template>
-  <div class="">
-    <img :src="props.mobileImgSrc" class="absolute w-1/2 object-cover" />
-
-    <div>{{ props.title }}</div>
-    <div>{{ props.description }}</div>
-  </div>
-</template> -->
 
 <template>
   <div class="flex flex-col items-center gap-5">
@@ -25,7 +20,8 @@ const imgs = [props.dashboardImgSrc, props.mobileImgSrc];
       <img
         v-for="img of imgs"
         :src="img"
-        class="w-4/6 grow rounded-3xl border-[15px] border-gray-light"
+        @click="emit('imageClick')"
+        class="w-4/6 grow cursor-pointer rounded-3xl border-[15px] border-gray-light"
       />
     </div>
 
