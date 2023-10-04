@@ -16,6 +16,11 @@ import {
   HOME_ID,
   PROJECTS_ID,
   SERVICES_ID,
+  LINKEDIN_PROFILE_URL,
+  GITHUB_PROFILE_URL,
+  MAILTO_INFO,
+  EMAIL,
+  NAME,
 } from "~/constants/constants";
 
 // Projects
@@ -68,6 +73,31 @@ const showImagesFullScreen = ref(false);
 
 const toogleShowImagesFullScreen = () =>
   (showImagesFullScreen.value = !showImagesFullScreen.value);
+
+// Contact
+const contacts = [
+  {
+    icon: "mdi:email",
+    link: {
+      title: EMAIL,
+      ref: MAILTO_INFO,
+    },
+  },
+  {
+    icon: "mdi:linkedin",
+    link: {
+      title: NAME,
+      ref: LINKEDIN_PROFILE_URL,
+    },
+  },
+  {
+    icon: "mdi:github",
+    link: {
+      title: NAME,
+      ref: GITHUB_PROFILE_URL,
+    },
+  },
+];
 </script>
 
 <template>
@@ -190,6 +220,19 @@ const toogleShowImagesFullScreen = () =>
             Entre em contato comigo por qualquer um dos meios abaixo, ou me
             mande uma mensagem pelo formulário ao lado.
           </p>
+
+          <div class="flex flex-col gap-1">
+            <a
+              v-for="contact of contacts"
+              :href="contact.link.ref"
+              target="_blank"
+              class="flex items-center gap-2"
+            >
+              <Icon :name="contact.icon" class="h-16 w-16 text-primary" />
+
+              <p class="text-md italic text-white">{{ contact.link.title }}</p>
+            </a>
+          </div>
         </div>
 
         <div
@@ -203,7 +246,7 @@ const toogleShowImagesFullScreen = () =>
 
           <FieldTextArea placeholder="Mensagem" />
 
-          <BaseButton class="rounded-xl text-white">Enviar</BaseButton>
+          <BaseButton class="w-max rounded-xl text-white">Enviar</BaseButton>
         </div>
       </div>
     </section>
