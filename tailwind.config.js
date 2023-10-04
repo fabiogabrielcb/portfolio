@@ -15,6 +15,8 @@ export default {
 
         gray: "#9ca3af",
         "gray-light": "#e1e3e7",
+
+        error: "#cc0000",
       },
     },
   },

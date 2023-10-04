@@ -1,15 +1,35 @@
 <script setup lang="ts">
+import { useField } from "vee-validate";
+
+// General
 const props = defineProps<{
-  placeholder: string;
+  placeholder?: string;
+  name?: string;
 }>();
+
+// Form
+const { value, errorMessage } = useField<string>(props.name || "");
 </script>
 
 <template>
-  <div class="w-full rounded-xl bg-white p-3">
+  <div
+    class="w-full rounded-xl border-2 bg-white p-3"
+    :class="{
+      'border-secondary-light focus-within:border-primary': !errorMessage,
+      'border-error': errorMessage,
+    }"
+  >
     <input
-      type="text"
-      :placeholder="props.placeholder"
-      class="w-full bg-white outline-none"
+      :name="props.name"
+      :placeholder="placeholder"
+      v-model="value"
+      class="text-regular-14-bold-black w-full py-1 outline-none"
     />
+
+    <transition name="slide-fade-back">
+      <p v-if="errorMessage" class="text-error text-xs">
+        {{ errorMessage }}
+      </p>
+    </transition>
   </div>
 </template>

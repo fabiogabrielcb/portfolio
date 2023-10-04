@@ -41,32 +41,32 @@ html {
   filter: blur(1rem);
 }
 
-/* Slide fade X */
-.slide-fade-x-enter-active {
+/* Slide fade Next */
+.slide-fade-next-enter-active {
   transition: all 0.3s ease;
 }
 
-.slide-fade-x-leave-active {
+.slide-fade-next-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-x-enter,
-.slide-fade-x-leave-to {
+.slide-fade-next-enter,
+.slide-fade-next-leave-to {
   transform: translateX(10px);
   opacity: 0;
 }
 
-/* Slide fade Y */
-.slide-fade-y-enter-active {
+/* Slide fade Back */
+.slide-fade-back-enter-active {
   transition: all 0.3s ease;
 }
 
-.slide-fade-y-leave-active {
+.slide-fade-back-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-y-enter,
-.slide-fade-y-leave-to {
+.slide-fade-back-enter,
+.slide-fade-back-leave-to {
   transform: translateX(-10px);
   opacity: 0;
 }

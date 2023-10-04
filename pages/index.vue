@@ -22,6 +22,12 @@ import {
   EMAIL,
   NAME,
 } from "~/constants/constants";
+import { EmailService } from "../services";
+import { contactSchema, ContactSchemaSubmit } from "../formSchemas";
+
+// General
+const runtimeConfig = useRuntimeConfig();
+const toastPlugin = useNuxtApp().$toast;
 
 // Projects
 const projects = [
@@ -51,7 +57,7 @@ const projects = [
   },
 ];
 
-const projectTransition = ref("x");
+const projectTransition = ref("");
 const currentProjectIdx = ref(0);
 
 const hasNextProject = computed(
@@ -60,11 +66,11 @@ const hasNextProject = computed(
 const hasPreviousProject = computed(() => currentProjectIdx.value > 0);
 
 const onNextProject = () => {
-  projectTransition.value = "slide-fade-x";
+  projectTransition.value = "slide-fade-next";
   currentProjectIdx.value++;
 };
 const onPreviousProject = () => {
-  projectTransition.value = "slide-fade-y";
+  projectTransition.value = "slide-fade-back";
   currentProjectIdx.value--;
 };
 
@@ -75,6 +81,7 @@ const toogleShowImagesFullScreen = () =>
   (showImagesFullScreen.value = !showImagesFullScreen.value);
 
 // Contact
+const loading = ref(false);
 const contacts = [
   {
     icon: "mdi:email",
@@ -98,6 +105,29 @@ const contacts = [
     },
   },
 ];
+
+const onContactFormSubmit = async ({
+  name,
+  email,
+  message,
+}: ContactSchemaSubmit) => {
+  loading.value = true;
+
+  try {
+    await EmailService.sendEmail(
+      name,
+      email,
+      message,
+      runtimeConfig.public.emailjsPublicKey,
+    );
+
+    toastPlugin.success("Email enviado com sucesso");
+  } catch (error) {
+    toastPlugin.error("Erro ao enviar email");
+  }
+
+  loading.value = false;
+};
 </script>
 
 <template>
@@ -221,7 +251,7 @@ const contacts = [
             mande uma mensagem pelo formulário ao lado.
           </p>
 
-          <div class="flex flex-col gap-1">
+          <div class="flex w-max flex-col gap-1">
             <a
               v-for="contact of contacts"
               :href="contact.link.ref"
@@ -235,19 +265,29 @@ const contacts = [
           </div>
         </div>
 
-        <div
-          class="flex w-full flex-col gap-5 rounded-3xl bg-secondary-light p-8"
+        <BaseForm
+          :validation-schema="contactSchema"
+          :loading="loading"
+          @submit="onContactFormSubmit"
+          class="w-full"
         >
-          <div class="flex gap-5">
-            <FieldText placeholder="Nome" />
+          <div class="flex flex-col gap-5 rounded-3xl bg-secondary-light p-8">
+            <div class="flex gap-5">
+              <FieldText placeholder="Nome" name="name" />
 
-            <FieldText placeholder="Email" />
+              <FieldText placeholder="Email" name="email" />
+            </div>
+
+            <FieldTextArea placeholder="Mensagem" name="message" />
+
+            <BaseButton
+              type="submit"
+              :loading="loading"
+              class="w-max rounded-xl text-white"
+              >Enviar</BaseButton
+            >
           </div>
-
-          <FieldTextArea placeholder="Mensagem" />
-
-          <BaseButton class="w-max rounded-xl text-white">Enviar</BaseButton>
-        </div>
+        </BaseForm>
       </div>
     </section>
   </div>

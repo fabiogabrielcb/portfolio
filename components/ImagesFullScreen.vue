@@ -8,7 +8,7 @@ const emit = defineEmits<{
 }>();
 
 //
-const projectTransition = ref("x");
+const projectTransition = ref("");
 const currentImgIdx = ref(0);
 
 const hasNextImg = computed(
@@ -17,11 +17,11 @@ const hasNextImg = computed(
 const hasPreviousImg = computed(() => currentImgIdx.value > 0);
 
 const onNextImg = () => {
-  projectTransition.value = "slide-fade-x";
+  projectTransition.value = "slide-fade-next";
   currentImgIdx.value++;
 };
 const onPreviousImg = () => {
-  projectTransition.value = "slide-fade-y";
+  projectTransition.value = "slide-fade-back";
   currentImgIdx.value--;
 };
 </script>
