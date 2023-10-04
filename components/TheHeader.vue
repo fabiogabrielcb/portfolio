@@ -1,6 +1,14 @@
 <script setup lang="ts">
-import { HOME_ID, SERVICES_ID, PROJECTS_ID } from "~/constants";
-import { IMAGE_LOGO } from "../assets";
+import {
+  HOME_ID,
+  SERVICES_ID,
+  PROJECTS_ID,
+  CONTACT_ID,
+} from "~/constants/constants";
+import { IMAGE_LOGO } from "../constants/assets";
+import { ROUTE_HOME } from "~/constants/routes";
+
+const router = useRouter();
 
 const categories = [
   {
@@ -16,7 +24,15 @@ const categories = [
     title: "Projetos",
     id: PROJECTS_ID,
   },
+  {
+    title: "Contato",
+    id: CONTACT_ID,
+  },
 ];
+
+const goHomeSection = (id: string) => {
+  router.push(`${ROUTE_HOME}#${id}`);
+};
 </script>
 
 <template>
@@ -42,6 +58,6 @@ const categories = [
       </ul>
     </div>
 
-    <BaseButton>Fale comigo</BaseButton>
+    <BaseButton @click="goHomeSection(CONTACT_ID)">Fale comigo</BaseButton>
   </div>
 </template>

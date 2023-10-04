@@ -41,18 +41,33 @@ html {
   filter: blur(1rem);
 }
 
-/* Slide fade */
-.slide-fade-enter-active {
+/* Slide fade X */
+.slide-fade-x-enter-active {
   transition: all 0.3s ease;
 }
 
-.slide-fade-leave-active {
+.slide-fade-x-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter,
-.slide-fade-leave-to {
+.slide-fade-x-enter,
+.slide-fade-x-leave-to {
   transform: translateX(10px);
+  opacity: 0;
+}
+
+/* Slide fade Y */
+.slide-fade-y-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-y-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-y-enter,
+.slide-fade-y-leave-to {
+  transform: translateX(-10px);
   opacity: 0;
 }
 </style>

@@ -7,6 +7,8 @@ const emit = defineEmits<{
   (e: "close"): void;
 }>();
 
+//
+const projectTransition = ref("x");
 const currentImgIdx = ref(0);
 
 const hasNextImg = computed(
@@ -14,13 +16,19 @@ const hasNextImg = computed(
 );
 const hasPreviousImg = computed(() => currentImgIdx.value > 0);
 
-const onNextImg = () => currentImgIdx.value++;
-const onPreviousImg = () => currentImgIdx.value--;
+const onNextImg = () => {
+  projectTransition.value = "slide-fade-x";
+  currentImgIdx.value++;
+};
+const onPreviousImg = () => {
+  projectTransition.value = "slide-fade-y";
+  currentImgIdx.value--;
+};
 </script>
 
 <template>
   <div
-    class="fixed bottom-0 left-0 z-50 flex h-full w-full flex-col items-center justify-center gap-5 bg-black p-10 backdrop-blur"
+    class="fixed bottom-0 left-0 z-50 flex h-full w-full flex-col items-center justify-start gap-5 bg-black p-10 backdrop-blur"
   >
     <Icon
       name="bytesize:close"
@@ -41,7 +49,7 @@ const onPreviousImg = () => currentImgIdx.value--;
         }"
       />
 
-      <transition name="slide-fade" mode="out-in">
+      <transition :name="projectTransition" mode="out-in">
         <img
           :key="currentImgIdx"
           :src="images[currentImgIdx]"

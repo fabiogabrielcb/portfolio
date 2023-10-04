@@ -10,8 +10,13 @@ import {
   IMAGE_KAROV_MOBILE,
   IMAGE_KOLEL_MOBILE,
   IMAGE_UPHOTO_MOBILE,
-} from "~/assets";
-import { HOME_ID, PROJECTS_ID, SERVICES_ID } from "~/constants";
+} from "~/constants/assets";
+import {
+  CONTACT_ID,
+  HOME_ID,
+  PROJECTS_ID,
+  SERVICES_ID,
+} from "~/constants/constants";
 
 // Projects
 const projects = [
@@ -40,6 +45,8 @@ const projects = [
     dashboardImgSrc: IMAGE_UPHOTO_DASHBOARD,
   },
 ];
+
+const projectTransition = ref("x");
 const currentProjectIdx = ref(0);
 
 const hasNextProject = computed(
@@ -47,8 +54,14 @@ const hasNextProject = computed(
 );
 const hasPreviousProject = computed(() => currentProjectIdx.value > 0);
 
-const onNextProject = () => currentProjectIdx.value++;
-const onPreviousProject = () => currentProjectIdx.value--;
+const onNextProject = () => {
+  projectTransition.value = "slide-fade-x";
+  currentProjectIdx.value++;
+};
+const onPreviousProject = () => {
+  projectTransition.value = "slide-fade-y";
+  currentProjectIdx.value--;
+};
 
 // Image full screen
 const showImagesFullScreen = ref(false);
@@ -131,7 +144,7 @@ const toogleShowImagesFullScreen = () =>
           }"
         />
 
-        <transition name="slide-fade" mode="out-in">
+        <transition :name="projectTransition" mode="out-in">
           <Project
             :key="currentProjectIdx"
             :title="projects[currentProjectIdx].title"
@@ -162,6 +175,36 @@ const toogleShowImagesFullScreen = () =>
             'bg-secondary': !hasNextProject,
           }"
         />
+      </div>
+    </section>
+
+    <section :id="CONTACT_ID" class="bg-secondary section">
+      <div class="flex">
+        <div class="flex w-full flex-col gap-10">
+          <div class="flex flex-col gap-5 text-5xl text-white">
+            <p>Tem um projeto</p>
+            <p class="text-primary">em mente?</p>
+          </div>
+
+          <p class="w-3/4 text-justify text-lg text-white">
+            Entre em contato comigo por qualquer um dos meios abaixo, ou me
+            mande uma mensagem pelo formulário ao lado.
+          </p>
+        </div>
+
+        <div
+          class="flex w-full flex-col gap-5 rounded-3xl bg-secondary-light p-8"
+        >
+          <div class="flex gap-5">
+            <FieldText placeholder="Nome" />
+
+            <FieldText placeholder="Email" />
+          </div>
+
+          <FieldTextArea placeholder="Mensagem" />
+
+          <BaseButton class="rounded-xl text-white">Enviar</BaseButton>
+        </div>
       </div>
     </section>
   </div>
