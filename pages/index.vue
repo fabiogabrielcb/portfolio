@@ -134,18 +134,24 @@ const onContactFormSubmit = async ({
   <div>
     <TheHeader ref="header" />
 
-    <section :id="HOME_ID" class="section">
-      <div class="pt-22 flex grow items-center justify-between">
-        <div class="flex w-1/2 flex-col gap-10">
+    <section :id="HOME_ID" class="section justify-center">
+      <div
+        class="flex w-full grow flex-col items-center justify-between gap-10 md:flex-row"
+      >
+        <div class="flex w-full flex-col gap-10 md:w-1/2">
           <p class="w-max rounded-full border p-3 text-lg">Olá, tudo bem ?</p>
 
-          <div class="flex flex-col gap-5 text-5xl">
-            <p class="text-primary">Eu sou o Akiva</p>
-            <p>Programador Fullstack</p>
-            <p>Situado no Brasil</p>
-          </div>
+          <TheTitle
+            :text="[
+              '',
+              'Eu sou o Akiva Barreto',
+              'Programador Fullstack',
+              '',
+              'Situado no Brasil',
+            ]"
+          />
 
-          <p class="w-3/5 text-justify text-lg text-gray">
+          <p class="text-gray w-full text-justify text-lg md:w-3/5">
             Com anos de programação, já tive a oportunidade de trabalhar em
             muitos projetos, com as mais diferentes pessoas, e em cada projeto
             tirar um aprendizado incrível.
@@ -157,13 +163,13 @@ const onContactFormSubmit = async ({
     </section>
 
     <section :id="SERVICES_ID" class="bg-secondary section">
-      <p class="text-4xl text-white">
-        Meus <span class="text-primary">Serviços</span>
-      </p>
+      <TheTitle :text="['Meus', 'Serviços']" class="text-white" />
 
       <Separator class="mb-10" />
 
-      <div class="flex gap-7">
+      <div
+        class="flex gap-7 overflow-y-hidden overflow-x-scroll md:overflow-visible"
+      >
         <Service
           title="Sites"
           description="Criação de sites, desenvolvimento completo, entregando já com o endereço do site."
@@ -186,18 +192,15 @@ const onContactFormSubmit = async ({
     </section>
 
     <section :id="PROJECTS_ID" class="section">
-      <div class="mb-8 flex flex-col gap-3 text-4xl">
-        <p class="text-4xl">Dê uma olhada nos</p>
+      <TheTitle :text="['Dê uma olhada nos', 'meus projetos']" class="" />
 
-        <p class="text-primary">meus Projetos</p>
-      </div>
+      <Separator class="mb-10" />
 
       <div class="flex grow items-start justify-between">
-        <Icon
-          name="formkit:arrowleft"
-          color="white"
+        <RoundedIcon
+          icon="formkit:arrowleft"
           @click="hasPreviousProject ? onPreviousProject() : null"
-          class="self-center rounded-icon"
+          class="self-center"
           :class="{
             'bg-primary': hasPreviousProject,
             'bg-secondary': !hasPreviousProject,
@@ -225,11 +228,10 @@ const onContactFormSubmit = async ({
           ]"
         />
 
-        <Icon
-          name="formkit:arrowright"
-          color="white"
+        <RoundedIcon
+          icon="formkit:arrowright"
           @click="hasNextProject ? onNextProject() : null"
-          class="self-center rounded-icon"
+          class="self-center"
           :class="{
             'bg-primary': hasNextProject,
             'bg-secondary': !hasNextProject,
@@ -239,12 +241,12 @@ const onContactFormSubmit = async ({
     </section>
 
     <section :id="CONTACT_ID" class="bg-secondary section">
-      <div class="flex">
+      <div class="flex flex-col gap-10 md:flex-row">
         <div class="flex w-full flex-col gap-10">
-          <div class="flex flex-col gap-5 text-5xl text-white">
-            <p>Tem um projeto</p>
-            <p class="text-primary">em mente?</p>
-          </div>
+          <TheTitle
+            :text="['Tem um projeto', 'em mente?']"
+            class="text-white"
+          />
 
           <p class="w-3/4 text-justify text-lg text-white">
             Entre em contato comigo por qualquer um dos meios abaixo, ou me
@@ -258,7 +260,7 @@ const onContactFormSubmit = async ({
               target="_blank"
               class="flex items-center gap-2"
             >
-              <Icon :name="contact.icon" class="h-16 w-16 text-primary" />
+              <Icon :name="contact.icon" class="text-primary h-16 w-16" />
 
               <p class="text-md italic text-white">{{ contact.link.title }}</p>
             </a>
@@ -271,7 +273,7 @@ const onContactFormSubmit = async ({
           @submit="onContactFormSubmit"
           class="w-full"
         >
-          <div class="flex flex-col gap-5 rounded-3xl bg-secondary-light p-8">
+          <div class="bg-secondary-light flex flex-col gap-5 rounded-3xl p-8">
             <div class="flex gap-5">
               <FieldText placeholder="Nome" name="name" />
 

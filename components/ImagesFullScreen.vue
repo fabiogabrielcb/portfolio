@@ -28,21 +28,18 @@ const onPreviousImg = () => {
 
 <template>
   <div
-    class="fixed bottom-0 left-0 z-50 flex h-full w-full flex-col items-center justify-start gap-5 bg-black p-10 backdrop-blur"
+    class="fixed bottom-0 left-0 z-50 flex h-full w-full flex-col items-center justify-center gap-5 bg-black p-10 backdrop-blur"
   >
-    <Icon
-      name="bytesize:close"
-      color="white"
+    <RoundedIcon
+      icon="bytesize:close"
       @click="emit('close')"
-      class="h-14 w-14 self-start bg-secondary rounded-icon"
+      class="bg-secondary self-start"
     />
 
-    <div class="flex w-full items-center justify-between">
-      <Icon
-        name="formkit:arrowleft"
-        color="white"
+    <div class="flex w-full items-center justify-between gap-5">
+      <RoundedIcon
+        icon="formkit:arrowleft"
         @click="hasPreviousImg ? onPreviousImg() : null"
-        class="rounded-icon"
         :class="{
           'bg-primary': hasPreviousImg,
           'bg-secondary': !hasPreviousImg,
@@ -53,15 +50,13 @@ const onPreviousImg = () => {
         <img
           :key="currentImgIdx"
           :src="images[currentImgIdx]"
-          class="w-4/6 rounded-lg border-8 border-gray"
+          class="border-gray w-4/6 rounded-lg border-8"
         />
       </transition>
 
-      <Icon
-        name="formkit:arrowright"
-        color="white"
+      <RoundedIcon
+        icon="formkit:arrowright"
         @click="hasNextImg ? onNextImg() : null"
-        class="rounded-icon"
         :class="{
           'bg-primary': hasNextImg,
           'bg-secondary': !hasNextImg,

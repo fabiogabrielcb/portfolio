@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <div
-    class="flex cursor-pointer flex-col rounded-3xl p-5 pt-8 hover:scale-105"
+    class="flex cursor-pointer flex-col rounded-3xl p-5 pt-8 md:hover:scale-105"
     :class="{
       'bg-primary': props.highlighted,
       'bg-secondary-light': !props.highlighted,

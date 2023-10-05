@@ -1,6 +1,6 @@
 export default defineAppConfig({
   nuxtIcon: {
-    size: "80px", // default <Icon> size applied
+    size: "50px", // default <Icon> size applied
     class: "icon", // default <Icon> class applied
     aliases: {
       nuxt: "logos:nuxt-icon",
