@@ -21,14 +21,14 @@ const imgs = [props.dashboardImgSrc, props.mobileImgSrc];
         v-for="img of imgs"
         :src="img"
         @click="emit('imageClick')"
-        class="w-4/6 grow cursor-pointer rounded-3xl border-[15px] border-gray-light"
+        class="border-gray-light w-4/6 grow cursor-pointer rounded-3xl border-[15px]"
       />
     </div>
 
     <div class="flex gap-3">
       <div
         v-for="feature of props.features"
-        class="rounded-full bg-gray-light p-2 px-3"
+        class="bg-gray-light rounded-full p-2 px-3"
       >
         <p>{{ feature }}</p>
       </div>
@@ -36,6 +36,6 @@ const imgs = [props.dashboardImgSrc, props.mobileImgSrc];
 
     <p class="w-4/6 text-center text-2xl">{{ props.title }}</p>
 
-    <p class="w-4/6 text-center">{{ props.description }}</p>
+    <p class="text-md w-4/6 text-center italic">{{ props.description }}</p>
   </div>
 </template>

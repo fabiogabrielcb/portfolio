@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 text-2xl md:gap-5 md:text-5xl">
+  <div class="flex flex-col text-2xl md:leading-tight lg:text-5xl">
     <p>
       <span
         v-for="(item, idx) of text"

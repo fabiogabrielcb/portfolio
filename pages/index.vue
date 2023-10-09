@@ -34,7 +34,7 @@ const projects = [
   {
     title: "Kolel Rio - Aulas de conteúdo judaico",
     description:
-      "lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet",
+      "Fique por dentro de todas as atividades do Kolel Rio. Tenha estudos diários e shiurim de Torá. Saiba os horários das rezas pela halachá.",
     features: ["Aplicativo", "Dashboard", "API"],
     mobileImgSrc: IMAGE_KOLEL_MOBILE,
     dashboardImgSrc: IMAGE_KOLEL_DASHBOARD,
@@ -42,7 +42,7 @@ const projects = [
   {
     title: "Karov - Ache seu novo carro",
     description:
-      "lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet",
+      "Karov é um aplicativo desenvolvido para pessoas cansadas de procurar carros de forma física, entrar nas agências, falar com vendedores... Com esse app, você pode fazer tudo isso com rapidez e na palma da sua mão.",
     features: ["Aplicativo", "Dashboard", "API"],
     mobileImgSrc: IMAGE_KAROV_MOBILE,
     dashboardImgSrc: IMAGE_KAROV_DASHBOARD,
@@ -50,7 +50,7 @@ const projects = [
   {
     title: "uPhoto - Um novo jeito de imprimir suas fotos",
     description:
-      "lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem et lorem ipsum dolor sit amet",
+      "Com o uPhoto você pode mandar fotos / apostilas / documentos e recebê-los na porta da sua casa!",
     features: ["Aplicativo", "Dashboard", "API"],
     mobileImgSrc: IMAGE_UPHOTO_MOBILE,
     dashboardImgSrc: IMAGE_UPHOTO_DASHBOARD,

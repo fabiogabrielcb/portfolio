@@ -30,6 +30,13 @@ const categories = [
   },
 ];
 
+// App Bar
+const openAppBar = ref(false);
+const onMenuClick = () => {
+  console.log("onMenuClick");
+  openAppBar.value = !openAppBar.value;
+};
+
 const goHomeSection = (id: string) => {
   router.push(`${ROUTE_HOME}#${id}`);
 };
@@ -37,7 +44,7 @@ const goHomeSection = (id: string) => {
 
 <template>
   <div
-    class="fixed z-10 flex w-full flex-row items-center justify-between bg-secondary p-5 px-20 text-white"
+    class="bg-secondary fixed z-10 flex w-full flex-row items-center justify-between p-5 px-20 text-white"
   >
     <div class="flex flex-row items-center gap-3 text-lg">
       <img :src="IMAGE_LOGO" alt="Logo" class="w-12" />
@@ -45,19 +52,41 @@ const goHomeSection = (id: string) => {
       <p>Akiva</p>
     </div>
 
-    <div>
-      <ul class="flex flex-row">
+    <div class="lg:(flex items-center) hidden gap-5">
+      <ul class="lg:(flex-row) flex flex-col">
         <a
           v-for="category of categories"
           rel="noopener"
           :href="`#${category.id}`"
-          class="cursor-pointer px-5 hover:text-primary"
+          class="hover:text-primary cursor-pointer px-5"
         >
           {{ category.title }}
         </a>
       </ul>
+
+      <BaseButton @click="goHomeSection(CONTACT_ID)">Fale comigo</BaseButton>
     </div>
 
-    <BaseButton @click="goHomeSection(CONTACT_ID)">Fale comigo</BaseButton>
+    <div class="lg:(hidden) relative">
+      <Icon name="mdi:menu" @click="onMenuClick()" />
+
+      <div
+        v-if="openAppBar"
+        class="absolute right-0 flex flex-col items-center justify-center gap-5 rounded-lg border border-black bg-white p-5 px-8"
+      >
+        <ul class="flex flex-col gap-2">
+          <a
+            v-for="category of categories"
+            rel="noopener"
+            :href="`#${category.id}`"
+            class="hover:text-primary cursor-pointer px-5 text-black"
+          >
+            {{ category.title }}
+          </a>
+        </ul>
+
+        <BaseButton @click="goHomeSection(CONTACT_ID)">Fale comigo</BaseButton>
+      </div>
+    </div>
   </div>
 </template>
