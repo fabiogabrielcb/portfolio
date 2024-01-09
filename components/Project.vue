@@ -1,41 +1,23 @@
 <script setup lang="ts">
 const props = defineProps<{
-  features: string[];
   title: string;
   description: string;
-  mobileImgSrc: string;
-  dashboardImgSrc: string;
+  imgSrc: string;
 }>();
-
-const emit = defineEmits<{
-  (e: "imageClick"): void;
-}>();
-
-const imgs = [props.dashboardImgSrc, props.mobileImgSrc];
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-5">
-    <div class="flex w-1/2 justify-center gap-5">
-      <img
-        v-for="img of imgs"
-        :src="img"
-        @click="emit('imageClick')"
-        class="border-gray-light w-4/6 grow cursor-pointer rounded-3xl border-[15px]"
-      />
-    </div>
+  <div class="flex flex-col rounded-3xl border-2 p-5 pt-8">
+    <p class="text-3xl">
+      {{ props.title }}
+    </p>
 
-    <div class="flex gap-3">
-      <div
-        v-for="feature of props.features"
-        class="bg-gray-light rounded-full p-2 px-3"
-      >
-        <p>{{ feature }}</p>
-      </div>
-    </div>
+    <Separator />
 
-    <p class="w-4/6 text-center text-2xl">{{ props.title }}</p>
+    <p class="mb-5">
+      {{ props.description }}
+    </p>
 
-    <p class="text-md w-4/6 text-center italic">{{ props.description }}</p>
+    <img :src="props.imgSrc" class="grow rounded-3xl object-contain" />
   </div>
 </template>

@@ -158,7 +158,11 @@ const onContactFormSubmit = async ({
           </p>
         </div>
 
-        <img :src="IMAGE_PERSON" alt="Person" class="w-2/6 rounded" />
+        <img
+          :src="IMAGE_PERSON"
+          alt="Person"
+          class="lg:(block) hidden w-2/6 rounded"
+        />
       </div>
     </section>
 
@@ -167,9 +171,7 @@ const onContactFormSubmit = async ({
 
       <Separator class="mb-10" />
 
-      <div
-        class="flex gap-7 overflow-y-hidden overflow-x-scroll md:overflow-visible"
-      >
+      <div class="md:(flex-row) flex flex-col gap-7">
         <Service
           title="Sites"
           description="Criação de sites, desenvolvimento completo, entregando já com o endereço do site."
@@ -196,46 +198,15 @@ const onContactFormSubmit = async ({
 
       <Separator class="mb-10" />
 
-      <div class="flex grow items-start justify-between">
-        <RoundedIcon
-          icon="formkit:arrowleft"
-          @click="hasPreviousProject ? onPreviousProject() : null"
-          class="self-center"
-          :class="{
-            'bg-primary': hasPreviousProject,
-            'bg-secondary': !hasPreviousProject,
-          }"
-        />
-
-        <transition :name="projectTransition" mode="out-in">
-          <Project
-            :key="currentProjectIdx"
-            :title="projects[currentProjectIdx].title"
-            :description="projects[currentProjectIdx].description"
-            :features="projects[currentProjectIdx].features"
-            :mobile-img-src="projects[currentProjectIdx].mobileImgSrc"
-            :dashboard-img-src="projects[currentProjectIdx].dashboardImgSrc"
-            @image-click="toogleShowImagesFullScreen"
-          />
-        </transition>
-
-        <ImagesFullScreen
-          v-if="showImagesFullScreen"
-          @close="toogleShowImagesFullScreen"
-          :images="[
-            projects[currentProjectIdx].mobileImgSrc,
-            projects[currentProjectIdx].dashboardImgSrc,
-          ]"
-        />
-
-        <RoundedIcon
-          icon="formkit:arrowright"
-          @click="hasNextProject ? onNextProject() : null"
-          class="self-center"
-          :class="{
-            'bg-primary': hasNextProject,
-            'bg-secondary': !hasNextProject,
-          }"
+      <div class="md:(flex-row) flex flex-col gap-7">
+        <Project
+          v-for="(project, idx) of projects"
+          :key="idx"
+          :title="project.title"
+          :description="project.description"
+          :features="project.features"
+          :img-src="project.mobileImgSrc"
+          class="w-full"
         />
       </div>
     </section>
@@ -274,7 +245,7 @@ const onContactFormSubmit = async ({
           class="w-full"
         >
           <div class="bg-secondary-light flex flex-col gap-5 rounded-3xl p-8">
-            <div class="flex gap-5">
+            <div class="lg:(flex-row) flex flex-col gap-5">
               <FieldText placeholder="Nome" name="name" />
 
               <FieldText placeholder="Email" name="email" />

@@ -37,6 +37,6 @@ const props = defineProps<{
       {{ props.description }}
     </p>
 
-    <img :src="props.imgSrc" class="grow rounded-3xl" />
+    <img :src="props.imgSrc" class="grow rounded-3xl object-contain" />
   </div>
 </template>

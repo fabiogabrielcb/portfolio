@@ -24,10 +24,6 @@ const categories = [
     title: "Projetos",
     id: PROJECTS_ID,
   },
-  {
-    title: "Contato",
-    id: CONTACT_ID,
-  },
 ];
 
 // App Bar
@@ -44,7 +40,7 @@ const goHomeSection = (id: string) => {
 
 <template>
   <div
-    class="bg-secondary fixed z-10 flex w-full flex-row items-center justify-between p-5 px-20 text-white"
+    class="bg-secondary lg:(px-20) fixed z-10 flex w-full flex-row items-center justify-between p-5 px-5 text-white"
   >
     <div class="flex flex-row items-center gap-3 text-lg">
       <img :src="IMAGE_LOGO" alt="Logo" class="w-12" />
@@ -85,7 +81,9 @@ const goHomeSection = (id: string) => {
           </a>
         </ul>
 
-        <BaseButton @click="goHomeSection(CONTACT_ID)">Fale comigo</BaseButton>
+        <BaseButton @click="goHomeSection(CONTACT_ID)" class="w-40"
+          >Fale comigo</BaseButton
+        >
       </div>
     </div>
   </div>
