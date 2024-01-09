@@ -4,6 +4,7 @@ import {
   SERVICES_ID,
   PROJECTS_ID,
   CONTACT_ID,
+  NAME,
 } from "~/constants/constants";
 import { IMAGE_LOGO } from "../constants/assets";
 import { ROUTE_HOME } from "~/constants/routes";
@@ -29,7 +30,6 @@ const categories = [
 // App Bar
 const openAppBar = ref(false);
 const onMenuClick = () => {
-  console.log("onMenuClick");
   openAppBar.value = !openAppBar.value;
 };
 
@@ -45,7 +45,7 @@ const goHomeSection = (id: string) => {
     <div class="flex flex-row items-center gap-3 text-lg">
       <img :src="IMAGE_LOGO" alt="Logo" class="w-12" />
 
-      <p>Akiva</p>
+      <p>{{ NAME }}</p>
     </div>
 
     <div class="lg:(flex items-center) hidden gap-5">
@@ -75,6 +75,7 @@ const goHomeSection = (id: string) => {
             v-for="category of categories"
             rel="noopener"
             :href="`#${category.id}`"
+            @click="onMenuClick"
             class="hover:text-primary cursor-pointer px-5 text-black"
           >
             {{ category.title }}

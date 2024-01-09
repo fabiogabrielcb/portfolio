@@ -144,7 +144,7 @@ const onContactFormSubmit = async ({
           <TheTitle
             :text="[
               '',
-              'Eu sou o Akiva Barreto',
+              `Eu sou o ${NAME}`,
               'Programador Fullstack',
               '',
               'Situado no Brasil',
