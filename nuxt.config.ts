@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { NAME } from "./constants/constants";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-windicss", "nuxt-icon"],
@@ -12,7 +14,7 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-      title: "Portfolio - Akiva",
+      title: `Portfolio - ${NAME}`,
     },
   },
 });
