@@ -5,6 +5,7 @@
 <style>
 html {
   font-family: "Ubuntu", sans-serif;
+  scroll-behavior: smooth;
 }
 
 * {
